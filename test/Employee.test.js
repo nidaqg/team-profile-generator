@@ -1,5 +1,3 @@
-const { isTSAnyKeyword, exportAllDeclaration, toBindingIdentifierName } = require('@babel/types');
-const { describe } = require('yargs');
 const Employee = require('../lib/Employee');
 
 describe("Employee class", () => {
