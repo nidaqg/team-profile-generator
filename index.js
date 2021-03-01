@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateFile = require("./dist/renderedOutput");
+const Employee = require("./lib/Employee");
 
 let employees = [];
 
@@ -109,7 +110,6 @@ try {
           console.log(error);
     };
 }
-
 
 
 // Function call to initialize app
