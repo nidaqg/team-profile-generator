@@ -1,0 +1,12 @@
+.header {
+    text-align: center;
+  background-color: rgba(17, 98, 151, 0.599);
+  color: black;
+  border-radius: 0;
+  padding: 30px;
+  border-bottom: 5px solid black;
+}
+
+.teamCard {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

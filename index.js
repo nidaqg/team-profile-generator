@@ -2,7 +2,11 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateFile = require("./dist/renderedOutput");
 const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
+//Initialize employyes array to hold team member data
 let employees = [];
 
 const questions = [
@@ -37,44 +41,68 @@ const questions = [
     }
     },
     {
-    name:"office_number",
+    name:"officeNumber",
     type:"input",
     message:"Please enter the Manager's office number:",
-    when:(data) => data.employee_type === "Manager",
+    when:(data) => data.employee_type === "Manager", //only displayif employee type manager
     validate: function validateInput(name){
         return name !== '';
     }
     },
     {
-    name:"Engineer_github",
+    name:"github",
     type:"input",
     message:"Please enter the Engineer's GitHub username:",
-    when:(data) => data.employee_type === "Engineer",
+    when:(data) => data.employee_type === "Engineer", //only display if employee type Engineer
     validate: function validateInput(name){
         return name !== '';
     }
     },
     {
-    name:"Intern_school",
+    name:"school",
     type:"input",
     message:"Please enter the Intern's school name:",
-    when: (data) => data.employee_type === "Intern",
+    when: (data) => data.employee_type === "Intern", //only display if employee type Intern
     validate: function validateInput(name){
         return name !== '';
     }
     }
 ]
 
-// function to start questions and create employees array
+// function to start questions and push to employees array
 function getEmployee() {
     inquirer.prompt(
           [...questions]
     )
     .then ((data) => {
       try {
-          //push employee data to employee array,prompt to ask if user wants
-          //to add more employees
-    employees.push(data);
+    //Apply relevant classes to data, push teammember objects to employees array
+    let teamMember;
+    if (data.employee_type === "Manager") {
+        let name = data.name;
+        let id = data.id;
+        let email = data.email;
+        let officeNumber = data.officeNumber;
+        teamMember = new Manager (name, id, email, officeNumber);
+        employees.push(teamMember);
+
+    } else if (data.employee_type === "Engineer") {
+       let name = data.name;
+       let id = data.id;
+       let email = data.email;
+       let github = data.github;
+        teamMember = new Engineer (name, id, email, github);
+        employees.push(teamMember);
+    } else {
+        let name = data.name;
+        let id = data.id;
+        let email = data.email;
+        let school = data.school;
+        teamMember = new Intern (name, id, email, school);
+        employees.push(teamMember);
+
+    };
+    //ask users if they want to add more team members
     inquirer.prompt(
         [{
         name:"add_more",
@@ -101,9 +129,9 @@ function getEmployee() {
        
 
 
-function pushAnswersToRender(data) {
+function pushAnswersToRender(employees) {
 try {
-    //fs.writeFileSync('index.html', generateFile(data));
+    fs.writeFileSync('index.html', generateFile(employees));
     console.log('Success! Your team profiles page has been created!');
     console.log(employees);
     } catch (error) {

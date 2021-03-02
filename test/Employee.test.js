@@ -1,32 +1,39 @@
 const Employee = require('../lib/Employee');
 
-describe("Employee class", () => {
-  it("creates object with name, id and email data", () => {
-    const name = "John";
-     const id = "555";
-     const email = "abc@gmail";
-     let obj = {name, id, email};
-
-     expect(obj).toEqual({name:"John", id:"555", email:"abc@gmail"})
-  });
-   describe("getName", () => {
- it("gets name from array of employee data", () => {
-  const name = "John";
-    
-     expect (getName(name)).toEqual("John")
- });
-});
-  describe("getId", () => {
- it("", () => {
-
- })
-
-});
-  describe("getEmail", () => {
-
-});
-  describe("getRole", () => {
-    expect(new Role("Employee").toBe(true));
+test("return name via constructor", () => {
+  const test = "John";
+  const testEmployee = new Employee(test, 1, "john@gmail.com");
+  expect(testEmployee.name).toBe(test);
 });
 
+test("return id via constructor", () => {
+  const test = "1";
+  const testEmployee = new Employee("John", test, "john@gmail.com");
+  expect(testEmployee.id).toBe(test);
+});
+test("return email via constructor", () => {
+  const test = "john@gmail.com";
+  const testEmployee = new Employee("John", 1, test);
+  expect(testEmployee.email).toBe(test);
+});
+test("getRole() should return Employee", () => {
+  const test = "Employee";
+  const testEmployee = new Employee("John", 1, "john@gmail.com");
+  expect(testEmployee.getRole()).toBe(test);
+});
+
+test("return name via getName() method", () => {
+  const test = "John";
+  const testEmployee = new Employee(test, 1, "john@gmail.com");
+  expect(testEmployee.getName()).toBe(test);
+});
+test("return id via getId() method", () => {
+  const test = "1";
+  const testEmployee = new Employee("John", test, "john@gmail.com");
+  expect(testEmployee.getId()).toBe(test);
+});
+test("return name via getEmail() method", () => {
+  const test = "john@gmail.com";
+  const testEmployee = new Employee("John", 1, test);
+  expect(testEmployee.getEmail()).toBe(test);
 });
