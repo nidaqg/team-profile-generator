@@ -9,6 +9,7 @@ const Intern = require("./lib/Intern");
 //Initialize employyes array to hold team member data
 let employees = [];
 
+//questions array for inquirer
 const questions = [
     {
     name: "employee_type",
@@ -108,14 +109,14 @@ function getEmployee() {
         name:"add_more",
         type:"list",
         message:"Would you like to add another employee?",
-        choices:["Engineer", "Intern", "None"]
+        choices:["Yes", "No"]
         },
         ]
     )
       .then ((data) => {
-        //if statement to end inquirer and call function to render data if 'none'
+        //if statement to end inquirer and call function to render data if 'no'
         //chosen, or redirect to questions if more employees need to be added
-      if (data.add_more === 'None') {
+      if (data.add_more === 'No') {
         pushAnswersToRender(employees);
       } else {
         getEmployee();
@@ -127,8 +128,7 @@ function getEmployee() {
     }); 
     };
        
-
-
+//function to render data from prompt ansers to html page
 function pushAnswersToRender(employees) {
 try {
     fs.writeFileSync('index.html', generateFile(employees));

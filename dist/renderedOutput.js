@@ -3,8 +3,7 @@ const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 
-
-
+//function to render the cards with employee data
 function renderCards (employees) {
             
     for (var i=0; i<employees.length; i++) {
@@ -12,27 +11,28 @@ function renderCards (employees) {
         <section class="col-lg-4">
         <section class="card m-4 teamCard">
         <section class="card-body">
-        <h5 class="card-title">${employees[i].name}</h5>
-        <p class="card-text">ID: ${employees[i].id}</p>
-        <p class="card-text">Email: ${employees[i].email}</p>
+        <h3 class="card-title">${employees[i].getName()}</h3>
+        <h4 class="card-title">${employees[i].getRole()}</h4>
+        <p class="card-text">ID: ${employees[i].getId()}</p>
+        <p class="card-text">Email: ${employees[i].getEmail()}</p>
         `
         if (employees[i].officeNumber) {
         cardHTML += `
-        <p class="card-text">Office Number: ${employees[i].officeNumber}</p>
+        <p class="card-text">Office Number: ${employees[i].getOfficeNumber()}</p>
         </section>
         </section>
         </section>
         `;
         }else if (employees[i].github) {
             cardHTML += `
-        <p class="card-text">GitHub: ${employees[i].github}</p>
+        <p class="card-text">GitHub: ${employees[i].getGithub()}</p>
         </section>
         </section>
         </section>
         `;
         } else if (employees[i].school) {
             cardHTML += `
-        <p class="card-text">School: ${employees[i].school}</p>
+        <p class="card-text">School: ${employees[i].getSchool()}</p>
         </section>
         </section>
         </section>
@@ -40,10 +40,10 @@ function renderCards (employees) {
         }
 return cardHTML;
 }
-
    
 }
 
+//function to render html with the employee data
 function generateFile(employees) {
     return `
     <!DOCTYPE html>
