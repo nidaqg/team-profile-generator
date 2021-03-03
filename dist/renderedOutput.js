@@ -5,16 +5,17 @@ const Intern = require('../lib/Intern');
 
 //function to render the cards with employee data
 function renderCards (employees) {
-            
+    let arrayCards = [];
+//iterate through employees array, create html snippet for each, push to final array      
     for (var i=0; i<employees.length; i++) {
         var cardHTML = `
-        <section class="col-lg-4">
-        <section class="card m-4 teamCard">
+        <section class="col-lg-3">
+        <section class="card m-3 teamCard">
         <section class="card-body">
-        <h3 class="card-title">${employees[i].getName()}</h3>
+        <h2 class="card-title">${employees[i].getName()}</h2>
         <h4 class="card-title">${employees[i].getRole()}</h4>
         <p class="card-text">ID: ${employees[i].getId()}</p>
-        <p class="card-text">Email: ${employees[i].getEmail()}</p>
+        <p class="card-text">Email: <a href="mailto:${employees[i].getEmail()}" target="_blank" rel="noopener noreferrer">${employees[i].getEmail()}</a></p>
         `
         if (employees[i].officeNumber) {
         cardHTML += `
@@ -23,13 +24,17 @@ function renderCards (employees) {
         </section>
         </section>
         `;
+        arrayCards.push(cardHTML);
+
         }else if (employees[i].github) {
             cardHTML += `
-        <p class="card-text">GitHub: ${employees[i].getGithub()}</p>
+        <p class="card-text">GitHub: <a href="https://github.com/${employees[i].getGithub()}">${employees[i].getGithub()}</a></p>
         </section>
         </section>
         </section>
         `;
+        arrayCards.push(cardHTML);
+
         } else if (employees[i].school) {
             cardHTML += `
         <p class="card-text">School: ${employees[i].getSchool()}</p>
@@ -37,10 +42,10 @@ function renderCards (employees) {
         </section>
         </section>
         `;
+        arrayCards.push(cardHTML);
         }
-return cardHTML;
 }
-   
+return arrayCards;   
 }
 
 //function to render html with the employee data
@@ -61,7 +66,7 @@ function generateFile(employees) {
     </header>
     <main>
       <section class="row justify-content-center">
-      <section class="mt-4 mb-4 col-md-8 text-center justify-content-center">
+      <section class="mt-4 mb-4 col-md-10 text-center justify-content-center">
       <section class="row">
       ${renderCards(employees)}
       </section>
