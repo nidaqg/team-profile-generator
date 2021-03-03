@@ -67,7 +67,7 @@ function generateFile(employees) {
     <main>
       <section class="row justify-content-center">
       <section class="mt-4 mb-4 col-md-10 text-center justify-content-center">
-      <section class="row">
+      <section class="row justify-content-center">
       ${renderCards(employees)}
       </section>
       </section>
