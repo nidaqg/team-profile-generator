@@ -28,7 +28,7 @@ function renderCards (employees) {
 
         }else if (employees[i].github) {
             cardHTML += `
-        <p class="card-text">GitHub: <a href="https://github.com/${employees[i].getGithub()}">${employees[i].getGithub()}</a></p>
+        <p class="card-text">GitHub: <a href="https://github.com/${employees[i].getGithub()}" target="_blank" rel="noopener noreferrer">${employees[i].getGithub()}</a></p>
         </section>
         </section>
         </section>

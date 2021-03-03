@@ -108,7 +108,7 @@ function getEmployee() {
         [{
         name:"add_more",
         type:"list",
-        message:"Would you like to add another employee?",
+        message:"Would you like to add another team member?",
         choices:["Yes", "No"]
         },
         ]
@@ -133,12 +133,34 @@ function pushAnswersToRender(employees) {
 try {
     fs.writeFileSync('index.html', generateFile(employees));
     console.log('Success! Your team profiles page has been created!');
-    console.log(employees);
+    //console.log(employees);
     } catch (error) {
           console.log(error);
     };
 }
 
-
 // Function call to initialize app
-getEmployee();
+function init () {
+    inquirer.prompt(
+        [{
+        name:"welcome_message",
+        type:"list",
+        message:"Welcome to your team profile builder! To start building your team, please enter information for your team Manager first. Ready to begin?",
+        choices:["Yes"]
+        },
+        ]
+        )
+        .then ((data) => {
+          try {   
+            if (data.welcome_message === "Yes") {
+            getEmployee(data);
+            }
+        } catch (error) {
+        console.log(error);
+        }
+       })
+    }
+
+    init()
+    
+
