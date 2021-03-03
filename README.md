@@ -29,12 +29,11 @@ This application had several parts: it made use of the npm inquirer package to p
 To run the application, use the command 'node index.js' from your command line. You will then be presented with a series of prompts. Each prompt must be answered for the application to proceed, validation methods have been added to the index.js file to prevent user from moving forward with the application if no input is given. The program will loop through the questions every time the user chooses to add another team member, program will end once the user chooses 'no' for the 'add more team members' question.
 Each employee type also has questions specific to that category which are only prompted when the relevant employee type is chosen. 
 Once all prompts have been answered, an HTML will be generated with each team member's details displayed in separate cards. This file will be saved as 'index.html' within the working directory.
-Link to video demo of how to run the application can be found here: [Video Demo]()
+Link to video demo of how to run the application can be found here: [Video Demo](https://drive.google.com/file/d/1dqUqCBcpJjv_TLrKUh2s5XdionTFbeTv/view)
 
 ## Contributing
  ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)
- 
- Link to Contributor's Covenant: https://www.contributor-covenant.org/version/2/0/code_of_conduct/
+ Link to Contributor's Covenant:[Contributors Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) 
 
 ## Tests
 Unit tests have been written for the employee.js, engineer.js, manager.js and intern.js files and can be found in the 'test' folder. The tests check to make sure the classes, the constructors within those classes and class methods work as expected. To run tests 'jest' npm must be installed, this can be done by running 'npm install' from the command line as the downl;oad folder is already provided. To run tests use 'npm run test' from the command line. 

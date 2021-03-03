@@ -160,7 +160,8 @@ function init () {
         }
        })
     }
-
+   
+    //call init function
     init()
     
 

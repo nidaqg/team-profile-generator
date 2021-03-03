@@ -11,9 +11,11 @@ function renderCards (employees) {
         var cardHTML = `
         <section class="col-lg-3">
         <section class="card m-3 teamCard">
-        <section class="card-body">
+        <section class="card-header">
         <h2 class="card-title">${employees[i].getName()}</h2>
         <h4 class="card-title">${employees[i].getRole()}</h4>
+        </section>
+        <section class="card-body">
         <p class="card-text">ID: ${employees[i].getId()}</p>
         <p class="card-text">Email: <a href="mailto:${employees[i].getEmail()}" target="_blank" rel="noopener noreferrer">${employees[i].getEmail()}</a></p>
         `
